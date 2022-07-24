@@ -1,0 +1,7 @@
+extends base
+
+block content 
+    form(action="/search", method="get")
+        label(for="search")
+        input#search(type="text", name="search" required)
+        button(type="submit") Search

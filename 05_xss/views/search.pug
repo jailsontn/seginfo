@@ -1,0 +1,13 @@
+extends base
+
+block title 
+    title Example XSS - Search
+
+block content 
+    div#teste(name=teste)
+    p Pesquisa: !{ search }
+    if search
+        p Nenhum resultado encontrado
+    a(href="/") Voltar 
+
+    
