@@ -3,6 +3,9 @@ const express = require('express')
 const session = require('express-session')
 const createError = require('http-errors')
 const log = require('morgan')
+//const cookieParser = require('cookie-parser')
+const csrf = require('csurf')
+const csrfProtection = csrf({ cookie: false })
 
 //router
 const authRoute = require('./routers/auth')
@@ -31,13 +34,15 @@ app.use(session(
     }
 ))
 app.use(get_username)
-
+//app.use(cookieParser())
+app.use(csrfProtection)
 app.get('/', function(req, res , next){
     res.redirect('/warnings')
     return
 })
 app.use('/', authRoute)
 app.use('/warnings', warningRoute)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
