@@ -32,14 +32,12 @@ app.use(session(
 ))
 app.use(get_username)
 
-
 app.get('/', function(req, res , next){
     res.redirect('/warnings')
     return
 })
 app.use('/', authRoute)
 app.use('/warnings', warningRoute)
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

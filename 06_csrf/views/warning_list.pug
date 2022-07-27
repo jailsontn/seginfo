@@ -3,7 +3,7 @@ extends base
 block content
     h1= title
     div 
-        a(href="/add") Adicionar 
+        a(href="/warnings/add") Adicionar 
         if list_warnings.length
             table 
                 thead 
@@ -17,8 +17,8 @@ block content
                         td=  val.id
                         td=  val.description
                         td 
-                            a(href="/edit/" + val.id) Editar 
+                            a(href="/warnings/edit/" + val.id) Editar 
                         td 
-                            a(href="/delete/" + val.id) Excluir 
+                            a(href="/warnings/delete/" + val.id) Excluir 
         else
             p Não existe avisos cadastrados.
