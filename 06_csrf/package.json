@@ -1,0 +1,23 @@
+{
+  "name": "06_csrf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "express-session": "^1.17.3",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "pug": "^3.0.2",
+    "uuid": "^8.3.2"
+  }
+}

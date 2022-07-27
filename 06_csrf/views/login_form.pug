@@ -1,0 +1,16 @@
+block content
+  h1 Login
+
+  if errors 
+    ul 
+      for erro in errors 
+        li!= erro.msg
+
+  form(method='POST' action='')
+    div 
+        label(for='usename') Username: 
+        input#username(type="text", placeholder='username' name='username' required='true')
+    div
+        label(for='password') Password: 
+        input#password(type="password", placeholder='*****' name='password' required='true') 
+    button(type='submit') Submit 

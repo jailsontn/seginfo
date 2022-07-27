@@ -1,0 +1,24 @@
+extends base
+    
+block content
+    h1= title
+    div 
+        a(href="/add") Adicionar 
+        if list_warnings.length
+            table 
+                thead 
+                    th ID
+                    th Descrição
+                    th 
+                    th 
+                tbody 
+                each val in list_warnings
+                    tr 
+                        td=  val.id
+                        td=  val.description
+                        td 
+                            a(href="/edit/" + val.id) Editar 
+                        td 
+                            a(href="/delete/" + val.id) Excluir 
+        else
+            p Não existe avisos cadastrados.
