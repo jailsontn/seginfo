@@ -1,8 +1,10 @@
 const { v4: uuidv4 } = require('uuid')
 
 const objects = [ 
+    //usuario jailson e senha 12345678
     {id: '7503061d-e90c-4200-b93c-9051c7825f17', username: "jailson", password: "$2b$10$HW798THX1AKf9kYVf4sEDuyxAQz/kTvF2nqCeq..yAVi2bol0KeXa"},
-    {id: '8b098986-23f1-44bd-bbef-320f2b0195a1', username: "jobson", password: "$2b$10$CQlZks5/kfyAoyPzS9PiG.RoIHwBPWBE6DFN7WaQfl5oLwC1W2dlW"},
+    //usuario admin e senha 12345678
+    {id: '8b098986-23f1-44bd-bbef-320f2b0195a1', username: "admin", password: "$2b$10$CQlZks5/kfyAoyPzS9PiG.RoIHwBPWBE6DFN7WaQfl5oLwC1W2dlW"},
 ]
 
 const all = function(){
