@@ -8,9 +8,9 @@ Uma forma de prevenir ataques do tipo CSRF é adotando um tipo de Token, ou seja
 
 ## Exploit
 
-1 - Execute a aplicação
-1 - Logue com o usuário admin (Senha: 12345678).
-2 - Abra o Arquivos csrf.html
+1. Execute a aplicação
+2. Logue com o usuário admin (Senha: 12345678).
+3. Abra o Arquivos csrf.html
 
 ## Dica
 
