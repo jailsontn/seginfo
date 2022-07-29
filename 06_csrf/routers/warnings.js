@@ -11,11 +11,11 @@ router.get('/', is_autenticate, function(req, res, next){
     res.render('warning_list', { 'title': 'Listar avisos', 'list_warnings': Warning.all()})
 })
 
-router.get('/add', is_autenticate, function(req, res, next){
+router.get('/add', function(req, res, next){
     res.render('warning_form', { 'title': 'Adicionar avisos' })
 })
 
-router.post('/add', is_autenticate, function(req, res, next){
+router.post('/add', function(req, res, next){
     let description = req.body.description
     let warning = Warning.create({
         description: description
