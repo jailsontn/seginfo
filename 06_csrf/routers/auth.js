@@ -6,7 +6,7 @@ const User = require('../models/users')
 const { autenticate, login, logout, URL_LOGIN} = require('../utils/auth')
 
 router.get('/login', function(req, res, next){
-    res.render('login_form')
+    res.render('login_form', {'csrfToken': req.csrfToken()})
 })
 
 router.post('/login', async function(req, res, next){
