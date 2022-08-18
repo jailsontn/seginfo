@@ -1,0 +1,15 @@
+extend base
+
+block content
+  if erro 
+    div Login ou senha inválidas
+    br
+  form(action="", method="post") 
+    div
+      label(for="username") Usuário 
+      input#username(type="text", name="username" required=true)
+    div
+    label(for="password") Senha 
+      input#password(type="password", name="password" required=true)
+    div  
+      input(type="submit", value="Login")
