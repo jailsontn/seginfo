@@ -1,0 +1,33 @@
+GET http://127.0.0.1:3000/public
+
+###
+POST http://127.0.0.1:3000/register
+Content-Type: application/json
+
+{
+    "name" : "jailson",
+    "email": "jailsontenorio@gmail.com",
+    "password": "12345678"
+}
+
+###
+POST http://127.0.0.1:3000/login
+Content-Type: application/json
+
+{
+    "email": "admin@teste.com",
+    "password": "12345678"
+}
+###
+DELETE http://127.0.0.1:3000/logout
+
+###
+//subsituir token - usuário admin
+GET http://127.0.0.1:3000/private
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3RlLmNvbSIsImlhdCI6MTY2MTA4MzY0MSwiZXhwIjoxNjYxMDg1NDQxfQ.4zaVXblNNAaMb3Wh_JQMuIttO7HdUL8SwkGafAlDXnM
+
+###
+//subsituir token - usuário jailson
+GET http://127.0.0.1:3000/private
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVkNjIzYWUyLWQ1YWUtNGEyNi1hNTU3LTI1MjkyZTQ0M2I4MyIsImVtYWlsIjoiamFpbHNvbnRlbm9yaW9AZ21haWwuY29tIiwibmFtZSI6ImphaWxzb24iLCJpYXQiOjE2NjEwODU0MTgsImV4cCI6MTY2MTA4NzIxOH0.Yz3ZIXi_bpJrCNNffP_eZvZvFUEzMM8rS50KZ1UxodM
+
