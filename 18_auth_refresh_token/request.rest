@@ -1,0 +1,61 @@
+//testa rota publica
+GET http://127.0.0.1:3000/public
+
+###
+
+//testa registro de novo usuário
+POST http://127.0.0.1:3000/register
+Content-Type: application/json
+
+{
+    "name" : "jailson",
+    "email": "jailsontenorio@gmail.com",
+    "password": "12345678"
+}
+
+###
+
+//testa login com usuário ja existens no banco
+POST http://127.0.0.1:3000/login
+Content-Type: application/json
+
+{
+    "email": "admin@teste.com",
+    "password": "12345678"
+}
+
+###
+
+//Realiza logout (remove o refresh token da lista de token permitidos)
+//Lembre-se de substituir  o token no body da requisição (refresh token recebido no login/registro)
+DELETE http://127.0.0.1:3000/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyY2ViZWU1LTU3YzEtNGI4ZS1hNTUxLTY1MWUzNDcxMzAzZCIsImVtYWlsIjoiYWRtaW5AdGVzdGUuY29tIiwibmFtZSI6IkFkbWluIiwiaWF0IjoxNjYxMDk4NDc5LCJleHAiOjE2NjE1MzA0NzksImlzcyI6Im15YXBwIiwic3ViIjoiYWRtaW5AdGVzdGUuY29tIn0.9pzeYtzqTJ0f6WHm4CrbCyL9fDsYzbOd_Gz2_HqQaaA"
+}
+
+###
+
+//Gera novo access token
+//Lembre-se de substituir o token no body da requisição (refresh token)
+POST http://127.0.0.1:3000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyY2ViZWU1LTU3YzEtNGI4ZS1hNTUxLTY1MWUzNDcxMzAzZCIsImVtYWlsIjoiYWRtaW5AdGVzdGUuY29tIiwibmFtZSI6IkFkbWluIiwiaWF0IjoxNjYxMDk4NDc5LCJleHAiOjE2NjE1MzA0NzksImlzcyI6Im15YXBwIiwic3ViIjoiYWRtaW5AdGVzdGUuY29tIn0.9pzeYtzqTJ0f6WHm4CrbCyL9fDsYzbOd_Gz2_HqQaaA"
+}
+
+###
+
+//Teste de acesso a rota privada com usuário admin
+//Lembre-se de subsituir o access token do cabeçalho Authorization
+GET http://127.0.0.1:3000/private
+Authorization: Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyY2ViZWU1LTU3YzEtNGI4ZS1hNTUxLTY1MWUzNDcxMzAzZCIsImVtYWlsIjoiYWRtaW5AdGVzdGUuY29tIiwibmFtZSI6IkFkbWluIiwiaWF0IjoxNjYxMDk4NDc5LCJleHAiOjE2NjEwOTkwNzksImlzcyI6Im15YXBwIiwic3ViIjoiYWRtaW5AdGVzdGUuY29tIn0.xx01Bz_1MzaknUVQ6b0DawOP_MVSYEYu7DBn8PRTaXM
+
+###
+
+//Teste de acesso a rota privada com usuário jailson
+//Lembre-se de subsituir o access token do cabeçalho Authorization
+GET http://127.0.0.1:3000/private
+Authorization: Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyY2ViZWU1LTU3YzEtNGI4ZS1hNTUxLTY1MWUzNDcxMzAzZCIsImVtYWlsIjoiYWRtaW5AdGVzdGUuY29tIiwibmFtZSI6IkFkbWluIiwiaWF0IjoxNjYxMDk4NDc5LCJleHAiOjE2NjEwOTkwNzksImlzcyI6Im15YXBwIiwic3ViIjoiYWRtaW5AdGVzdGUuY29tIn0.xx01Bz_1MzaknUVQ6b0DawOP_MVSYEYu7DBn8PRTaXM
