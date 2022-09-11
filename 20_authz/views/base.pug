@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Blog Teste
+  body
+    h1 Blog Teste
+    block menu
+      if user 
+        div= user.name + " (" + user.role + ")"
+      ul 
+        li 
+          a(href="/") Inicial
+        li
+          if username 
+            a(href="/logout") Sair
+          else
+            a(href="/login") Entrar
+      
+    block content

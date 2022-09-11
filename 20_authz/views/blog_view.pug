@@ -1,0 +1,28 @@
+extend base
+
+block content
+    div
+        h2= article.title
+        p(style="text-align: center;")= article.author_name + " - "  + moment.unix(article.modification_date).format("DD/MM/YYYY HH:MM")
+        p(style="text-align: justify;")=article.content
+        
+    div 
+        h3 Comentários
+        each comment in comments 
+            div
+                p #{comment.author_name}: 
+                    span #{comment.content}
+                    span= ' (' + moment(comment.modification_date).format("DD/MM/YYYY HH:MM") + ')'
+                    if (user && user.id === comment.author)
+                        span: a(href="/blogs/comments/delete/" + comment.id) Delete
+        if user
+            if (user.role === 'Comum' || user.role === 'Editor')
+                form(action="/blogs/comments/add", method="post")
+                    div 
+                        label(for="content")
+                        textarea#content(name="content", cols="40", rows="5") 
+                        input#article_id(type="hidden", name="article_id" value=article.id)
+                    div
+                        button(type="submit") Comentar
+        else 
+            p Para adicionar novos comentários é necessário estar logado

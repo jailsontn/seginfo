@@ -1,0 +1,56 @@
+extend base
+
+block content
+    if messages
+        p: b=messages
+    if (user && (user.role === "Editor" || user.role === "Admin"))
+        div 
+            a(href="/blogs/add") Adicionar novo artigo
+    hr
+    if (user && (user.role === "Editor" || user.role === "Admin"))
+        form(action="", method="get") 
+            label(for="status") Status 
+            select#status(name="status")
+                if (undefined !==search && search.status === 'ALL')
+                    option(value="ALL" selected)  Todos
+                else 
+                    option(value="ALL")  Todos
+                if (undefined !==search && search.status === '1')
+                    option(value="1" selected)  Rascunho
+                else 
+                    option(value="1")  Rascunho
+                if (undefined !==search && search.status === '2')
+                    option(value="2" selected)  Publicado 
+                else 
+                    option(value="2")  Publicado 
+            label(for="me") Meus artigos 
+            if (undefined !==search && search.me === '1')
+                input#me(type="checkbox", name="me" value="1" checked)
+            else 
+                input#me(type="checkbox", name="me" value="1")
+            input(type="submit" value="Pesquisar") 
+    each article in articles
+        div
+            h1= article.title
+            p= article.content
+            //- p Quantidade de comentários:
+            if user
+                if article.status === '1'
+                    div Status: Rascunho
+                else if article.status === '2'
+                    div Status: Publicado
+                else 
+                    div Status: Desconhecido
+            p
+                a(href="/blogs/" + article.id) Visualizar
+            
+            if (user && (user.role === "Editor" || user.role === "Admin"))
+                p
+                    a(href="/blogs/edit/" + article.id) Editar
+                p
+                    a(href="/blogs/delete/" + article.id) Excluir
+        hr
+    if articles
+        if (user && (user.role === "Editor" || user.role === "Admin"))
+            div 
+                a(href="/blogs/add") Adicionar novo artigo

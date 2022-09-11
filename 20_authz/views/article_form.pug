@@ -1,0 +1,27 @@
+extend base
+
+block content
+    form(action="", method="post")
+        div 
+            label(for="title") Titulo
+            input#title(type="text", name="title", value=(undefined===article ? '' : article.title))
+        div 
+            label(for="content") Conteudo
+        div 
+            if undefined===article
+                textarea#content(name="content", cols="30", rows="10")
+            else
+                textarea#content(name="content", cols="30", rows="10")= article.content
+        div 
+            label(for="status") Status
+            select#status(name="status")
+                if (undefined !==article && article.status === '1')
+                    option(value="1" selected) Rasculho 
+                else 
+                    option(value="1") Rasculho 
+                if (undefined !==article && article.status === '2')
+                    option(value="2" selected) Publicado
+                else 
+                    option(value="2") Publicado
+        div
+            button(type="submit") Salvar
