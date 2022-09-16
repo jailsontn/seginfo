@@ -181,7 +181,7 @@ passport.deserializeUser(function(user, done) {
   process.nextTick(function() {
     //return done(null, user);
     userInfo = getUserByID(user.id)
-    delete(userInfo.password)
+    // delete(userInfo.password)
     return done(null, userInfo);
   });
 });
