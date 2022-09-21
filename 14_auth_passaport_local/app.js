@@ -128,15 +128,15 @@ const isAuth = function(req, res ,next){
   if (req.isAuthenticated()) {
     res.locals.username = res.user.username
     next()
+  }else{
+    res.status(401).send("Somente usuários autenticados")
   }
-  res.status(401).send("Somente usuários autenticados")
 }
 
 //rotas
 
 app.get('/', (req, res, next) => {
-  res.redirect("/public")
-  return
+  return res.redirect("/public")
 })
 
 app.get('/login', (req, res, next) => {
@@ -151,7 +151,7 @@ app.post('/login', passport.authenticate('local', {
 app.get('/logout', (req, res, next) => {
   req.logout(function(err) {
     if (err) { return next(err); }
-    res.redirect('/');
+    return res.redirect('/');
   });
 })
 
@@ -163,8 +163,7 @@ app.get('/public', (req, res, next) => {
 //Area acessível só por usuário autenticado usando metodo de verificação
 app.get('/restrict', (req, res, next) => {
   if (req.isAuthenticated()){
-    res.render('restrict', {username: req.user.username})
-    return
+    return res.render('restrict', {username: req.user.username})
   }
   return res.redirect('/login')
 })
