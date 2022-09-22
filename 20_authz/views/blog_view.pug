@@ -3,7 +3,7 @@ extend base
 block content
     div
         h2= article.title
-        p(style="text-align: center;")= article.author_name + " - "  + moment.unix(article.modification_date).format("DD/MM/YYYY HH:MM")
+        p(style="text-align: center;")= article.author_name + " - "  + article.modification_date_formated
         p(style="text-align: justify;")=article.content
         
     div 
@@ -12,7 +12,7 @@ block content
             div
                 p #{comment.author_name}: 
                     span #{comment.content}
-                    span= ' (' + moment(comment.modification_date).format("DD/MM/YYYY HH:MM") + ')'
+                    span= ' (' + comment.modification_date_formated + ')'
                     if (user && user.id === comment.author)
                         span: a(href="/blogs/comments/delete/" + comment.id) Delete
         if user

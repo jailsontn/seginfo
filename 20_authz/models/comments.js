@@ -1,6 +1,9 @@
 const { v4: uuidv4 } = require('uuid')
 const {NotFound} = require('../helpers/erros')
 const { getUserByID } = require('./user')
+const moment = require('moment')
+
+const format_date = 'DD/MM/YYYY HH:mm'
 
 const comments = [
     {
@@ -27,8 +30,10 @@ const comments = [
 
 const getByID = function (id) {
     const comment = comments.find(c => c.id === id && c.deleted === false)
-    // comments.author_name = getUserByID(comments.author).name
     if (!comment) throw new NotFound("Comentário não encontrado")
+    comment.author_name = getUserByID(comments.author).name
+    comment.creation_date_formated = moment(comment.creation_date).format(format_date)
+    comment.modification_date_formated = moment(comment.modification_date).format(format_date)
     return comment
 }
 
@@ -39,6 +44,8 @@ const getAll = function (article_id=null) {
     }
     all = all.map(comment => {
         comment.author_name = getUserByID(comment.author).name
+        comment.creation_date_formated = moment(comment.creation_date).format(format_date)
+        comment.modification_date_formated = moment(comment.modification_date).format(format_date)
         return comment
     })
     return all

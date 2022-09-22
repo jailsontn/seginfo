@@ -2,10 +2,12 @@ const { v4: uuidv4 } = require('uuid')
 const Comments = require('./comments')
 const { getUserByID } = require('./user')
 const {NotFound} = require('../helpers/erros')
+const moment = require('moment')
 
 const DRAFT = '1'
 const PUBLISHED = '2'
 const ALL='ALL'
+const format_date = 'DD/MM/YYYY HH:mm'
 
 const articles = [
     {
@@ -37,6 +39,8 @@ const getByID = function (id) {
     if (!article) throw new NotFound("Artigo não encontrado")
     article.comments = Comments.getAll(id)
     article.author_name = getUserByID(article.author).name
+    article.creation_date_formated = moment(article.creation_date).format(format_date)
+    article.modification_date_formated = moment(article.modification_date).format(format_date)
     return article
 }
 

@@ -13,8 +13,6 @@ const sessionOptions = require('./config/session')(new MemoryStore({
 const { flash } = require('express-flash-message');
 const passport = require('passport')
 
-const moment = require('./middlewares/moment')
-
 const authRouter = require('./routes/auth')
 const articleRouter = require('./routes/article')
 
@@ -47,7 +45,6 @@ app.use(passport.authenticate('session'));
 //   next()
 // })
 app.use(sendUserView)
-app.use(moment)
 
 //rotas
 app.use('/', authRouter)
