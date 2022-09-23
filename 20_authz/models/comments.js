@@ -31,7 +31,7 @@ const comments = [
 const getByID = function (id) {
     const comment = comments.find(c => c.id === id && c.deleted === false)
     if (!comment) throw new NotFound("Comentário não encontrado")
-    comment.author_name = getUserByID(comments.author).name
+    comment.author_name = getUserByID(comment.author).name
     comment.creation_date_formated = moment(comment.creation_date).format(format_date)
     comment.modification_date_formated = moment(comment.modification_date).format(format_date)
     return comment
